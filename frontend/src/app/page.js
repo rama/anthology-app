@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Bricolage_Grotesque } from "next/font/google";
 import styles from "./page.module.css";
 
