@@ -9,12 +9,15 @@ const appNameFont = Bricolage_Grotesque({
 
 export default function Home() {
 	return (
-		<div className={styles.cover}>
-			<div className={styles.coverTitleGroup}>
-				<h1 className={appNameFont.className}>Anthology</h1>
-				<p>Find your next short story</p>
-				<Button>Sign Up</Button>
+		<>
+			<div className={styles.cover}>
+				<div className={styles.coverTitleGroup}>
+					<h1 className={appNameFont.className}>Anthology</h1>
+					<p>Find your next short story</p>
+					<Button>Sign Up</Button>
+				</div>
 			</div>
-		</div>
+			<div className={styles.visualInterest}></div>
+		</>
 	);
 }

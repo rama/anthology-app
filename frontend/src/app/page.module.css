@@ -1,6 +1,5 @@
 .cover {
 	background-image: url("/blossom-background.png");
-	width: 50%;
 	height: 486px;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -17,4 +16,20 @@
 .coverTitleGroup {
 	margin-bottom: 100px;
 	margin-left: 100px;
+}
+
+.visualInterest {
+	background-color: #ecff3d;
+	opacity: 0.8;
+	background: repeating-linear-gradient(
+		-45deg,
+		#f8ffbb,
+		#f8ffbb 25px,
+		#ecff3d 25px,
+		#ecff3d 30px,
+		#f8ffbb 30px,
+		#f8ffbb 35px,
+		#ecff3d 35px,
+		#ecff3d 60px
+	);
 }
