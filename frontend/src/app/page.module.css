@@ -33,3 +33,10 @@
 		#ecff3d 60px
 	);
 }
+
+.signInLink {
+	padding: 15px 25px;
+	color: hsl(336 100% 55%);
+	font-weight: bold;
+	text-decoration: underline;
+}
