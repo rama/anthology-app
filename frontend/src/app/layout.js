@@ -26,15 +26,15 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
-				<header>
+				{/* <header>
 					<h1 className={appNameFont.className}>Anthology</h1>
-				</header>
+				</header> */}
 				<div className={styles.page}>
 					<main className={styles.main}>{children}</main>
-					<footer className={styles.footer}>
-						Find your next short story.
-					</footer>
 				</div>
+				{/* <footer className={styles.footer}>
+						Find your next short story.
+					</footer> */}
 			</body>
 		</html>
 	);

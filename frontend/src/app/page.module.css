@@ -1,0 +1,20 @@
+.cover {
+	background-image: url("/blossom-background.png");
+	width: 50%;
+	height: 486px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: right;
+	background-color: white;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	max-height: 100vh;
+	margin: 25px;
+}
+
+.coverTitleGroup {
+	margin-bottom: 100px;
+	margin-left: 100px;
+}
