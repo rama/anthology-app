@@ -1,11 +1,11 @@
-#  Backend server with Django + Postgres
+# Backend server with Django + Postgres
 
 This is a Django project with a Postgres DB.
-
 
 ## Getting Started
 
 ### 1. Set up a virtual environment
+
 ```
 # On macOS/Linux:
 python3 -m venv venv
@@ -15,6 +15,7 @@ python -m venv venv
 ```
 
 ### 2. Activate the virtual environment
+
 ```
 # On macOS/Linux:
 source venv/bin/activate
@@ -26,28 +27,48 @@ venv\Scripts\activate
 You should now see (venv) at the beginning of your terminal prompt, indicating that the virtual environment is active.
 
 ### 3. Install the requirements
+
 ```
 pip install -r requirements.txt
 ```
 
 ### 4. Set up local database
+
 Start Postgres
+
 ```
 brew services start postgresql
 
 ```
 
+Create a new user
+
+```
+CREATE USER stories_user WITH PASSWORD 'password123';
+```
+
+Remember to update `settings.py` with your NAME and PASSWORD.
+
+Create a stories_db database
+
+```
+CREATE DATABASE stories_db WITH owner stories_user;
+```
+
 Run the migrations based on your Django models to create the database tables:
+
 ```
 python manage.py migrate
 ```
 
 Seed the story data
+
 ```
-python manage.py import_stories tmp/lightspeed_stories.csv 
+python manage.py import_stories tmp/lightspeed_stories.csv
 ```
 
 Optional: Test your import
+
 ```
 python manage.py shell
 >>> from stories.models import Story
@@ -58,6 +79,7 @@ python manage.py shell
 ```
 
 ### 5. Run the server
+
 ```
 python manage.py runserver
 ```
@@ -74,8 +96,8 @@ python manage.py createsuperuser
 
 ## To do
 
-- [x] Add Postgres db and a stories table
-- [x] Import scraped story metadata in Postgres (Lightspeed only for now)
-- [x] Create a Story model, run migration, and register Story with admin
-- [] Add API endpoints to the Story model for Next.js integration (using Django REST Framework?)
-- [] Standardize the publishing date for story metadata
+-   [x] Add Postgres db and a stories table
+-   [x] Import scraped story metadata in Postgres (Lightspeed only for now)
+-   [x] Create a Story model, run migration, and register Story with admin
+-   [] Add API endpoints to the Story model for Next.js integration (using Django REST Framework?)
+-   [] Standardize the publishing date for story metadata
