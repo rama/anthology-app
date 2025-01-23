@@ -30,14 +30,41 @@ You should now see (venv) at the beginning of your terminal prompt, indicating t
 pip install -r requirements.txt
 ```
 
-### 4. Run the server
+### 4. Set up local database
+Start Postgres
+```
+brew services start postgresql
+
+```
+
+Run the migrations based on your Django models to create the database tables:
+```
+python manage.py migrate
+```
+
+Seed the story data
+```
+python manage.py import_stories tmp/lightspeed_stories.csv 
+```
+
+Optional: Test your import
+```
+python manage.py shell
+>>> from stories.models import Story
+
+# Find all Stories
+>>> Story.objects.all()
+<QuerySet [...]>
+```
+
+### 5. Run the server
 ```
 python manage.py runserver
 ```
 
 Open [http://127.0.0.1:8000](http://127.0.0.1:8000) with your browser to see the [admin site](https://docs.djangoproject.com/en/5.1/ref/contrib/admin/).
 
-### 5. Log in to the admin site
+### 6. Log in to the admin site
 
 On the admin site, log in with your credentials. If you don't have credentials, you can create a superuser by running
 
