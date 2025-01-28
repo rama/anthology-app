@@ -12,11 +12,6 @@ export default async function Home() {
 	const stories = await fetch("http://127.0.0.1:8000/stories/");
 	const stories_data = await stories.json();
 
-	console.log("Logging stories " + stories_data);
-
-	console.log("Logging first stories_data element " + stories_data[0]);
-	
-
 	return (
 		<>
 			<div className={styles.cover}>
@@ -33,8 +28,15 @@ export default async function Home() {
 			</div>
 			<div className={styles.visualInterest}></div>
 			<div>
-				<h1 className={appNameFont.className}>Story Catalog</h1>
-				{/* <p>Stories: {stories[0].fields}</p> */}
+				<h1>Stories Catalog</h1>
+				<ul>
+					{stories_data.map((story) => (
+						<li key={story.id}>
+							<h2>{story.title}</h2>
+							<p>{story.description}</p>
+						</li>
+					))}
+				</ul>
 			</div>
 		</>
 	);

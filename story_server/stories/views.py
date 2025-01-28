@@ -6,20 +6,9 @@ from .models import Story
 
 def detail(request, id):
   story = Story.objects.get(id=id)
-  # data = {
-  #   'id': story.id,
-  #   'title': story.title,
-  #   'author': story.author
-  # }
   story_json = serialize('json', [story])
   return JsonResponse(story_json, safe=False)
 
 def all_stories(request):
-  stories = Story.objects.all()
-  # data = {
-  #   'id': story.id,
-  #   'title': story.title,
-  #   'author': story.author
-  # }
-  stories_json = serialize('json', stories[:5])
-  return JsonResponse(stories_json, safe=False)
+  stories = Story.objects.values('id', 'title', 'author')
+  return JsonResponse(list(stories), safe=False)
