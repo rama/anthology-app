@@ -18,12 +18,15 @@ export default async function Home() {
 				<div className={styles.coverTitleGroup}>
 					<h1 className={appNameFont.className}>Anthology</h1>
 					<p>Find your next short story</p>
-					<Button>
+					{/* <Button>
 						<Link href="/sign-up">Sign Up</Link>
 					</Button>
 					<Link className={styles.signInLink} href="/sign-in">
 						Sign In
-					</Link>
+					</Link> */}
+					<Button>
+						<Link href="/user/queue">Go to Queue</Link>
+					</Button>
 				</div>
 			</div>
 			<div className={styles.visualInterest}></div>
