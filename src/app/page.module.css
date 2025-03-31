@@ -1,3 +1,9 @@
+.gridContainer {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 24px;
+}
+
 .cover {
 	background-image: url("/blossom-background.png");
 	height: 486px;
