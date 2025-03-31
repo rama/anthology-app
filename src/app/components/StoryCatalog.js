@@ -1,9 +1,16 @@
 "use client";
-import { Paper, Box, Grid } from "@mui/material";
+import { Paper, Box, Grid, Typography } from "@mui/material";
 
 export default function StoryCatalog({ stories }) {
 	return (
-		<Box sx={{ flexGrow: 1, p: 8 }}>
+		<Box sx={{ flexGrow: 1, p: 2 }}>
+			<Typography
+				variant="h3"
+				component="h2"
+				sx={{ textAlign: "center", p: 3 }}
+			>
+				Story Catalog
+			</Typography>
 			<Grid
 				container
 				direction="row"
