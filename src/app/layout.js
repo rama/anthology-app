@@ -1,20 +1,27 @@
-import { Geist, Geist_Mono, Bricolage_Grotesque } from "next/font/google";
-import "./globals.css";
-import styles from "./layout.module.css";
-
-const geistSans = Geist({
-	variable: "--font-geist-sans",
-	subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
-	subsets: ["latin"],
-});
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import { Bricolage_Grotesque, Merriweather, Oswald } from "next/font/google";
+import theme from "../theme";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 
 const appNameFont = Bricolage_Grotesque({
 	weight: "800",
 	subsets: ["latin"],
+	display: "swap",
+	variable: "--app-name-font",
+});
+
+const headingFont = Oswald({
+	weight: ["700"],
+	subsets: ["latin"],
+	display: "swap",
+	variable: "--heading-font",
+});
+
+const bodyFont = Merriweather({
+	weight: ["400", "700"],
+	subsets: ["latin"],
+	display: "swap",
+	variable: "--body-font",
 });
 
 export const metadata = {
@@ -25,14 +32,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
-			<body className={`${geistSans.variable} ${geistMono.variable}`}>
-				{/* <header>
+			<body
+				className={`${bodyFont.variable} ${headingFont.variable} ${appNameFont.variable}`}
+			>
+				<AppRouterCacheProvider>
+					<ThemeProvider theme={theme}>
+						<CssBaseline />
+						{/* <header>
 					<h1 className={appNameFont.className}>Anthology</h1>
 				</header> */}
-				<div className={styles.page}>
-					<main className={styles.main}>{children}</main>
-				</div>
-				{/* <footer className={styles.footer}>
+						<main>{children}</main>
+						{/* <footer className={styles.footer}>
 						Find your next short story.
 					</footer> */}
 					</ThemeProvider>

@@ -1,8 +1,7 @@
 import { Bricolage_Grotesque } from "next/font/google";
 import styles from "./page.module.css";
-import Button from "./components/Button";
+import { Button, Stack, Typography } from "@mui/material";
 import Link from "next/link";
-import { CssBaseline } from "@mui/material";
 import StoryCatalog from "./components/StoryCatalog";
 
 const appNameFont = Bricolage_Grotesque({
@@ -16,21 +15,22 @@ export default async function Home() {
 
 	return (
 		<>
-			<CssBaseline />
 			<div className={styles.gridContainer}>
 				<div className={styles.cover}>
 					<div className={styles.coverTitleGroup}>
-						<h1 className={appNameFont.className}>Anthology</h1>
+						<Typography variant="appName">Anthology</Typography>
 						<p>Find your next short story</p>
-						{/* <Button>
-						<Link href="/sign-up">Sign Up</Link>
-					</Button>
-					<Link className={styles.signInLink} href="/sign-in">
-						Sign In
-					</Link> */}
-						<Button>
-							<Link href="/user/queue">Go to Queue</Link>
-						</Button>
+						<Stack direction="row" spacing={2}>
+							<Button variant="contained">
+								<Link href="/sign-up">Sign Up</Link>
+							</Button>
+							<Button variant="outlined">
+								<Link href="/sign-in">Sign In</Link>
+							</Button>
+							{/* <Button variant="contained">
+								<Link href="/user/queue">Go to Queue</Link>
+							</Button> */}
+						</Stack>
 					</div>
 				</div>
 				<div className={styles.visualInterest}></div>

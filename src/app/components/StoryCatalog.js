@@ -5,7 +5,7 @@ export default function StoryCatalog({ stories }) {
 	return (
 		<Box sx={{ flexGrow: 1, p: 2 }}>
 			<Typography
-				variant="h3"
+				variant="heading"
 				component="h2"
 				sx={{ textAlign: "center", p: 3 }}
 			>
