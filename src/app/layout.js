@@ -35,6 +35,8 @@ export default function RootLayout({ children }) {
 				{/* <footer className={styles.footer}>
 						Find your next short story.
 					</footer> */}
+					</ThemeProvider>
+				</AppRouterCacheProvider>
 			</body>
 		</html>
 	);
