@@ -27,6 +27,7 @@ export default async function Home() {
 							display: "flex",
 							flexDirection: "column",
 							justifyContent: "center",
+							margin: "25px",
 						}}
 					>
 						<Typography
