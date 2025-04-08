@@ -1,8 +1,6 @@
 import { Bricolage_Grotesque } from "next/font/google";
-import styles from "./page.module.css";
-import Button from "./components/Button";
+import { Grid, Box, Button, Stack, Typography } from "@mui/material";
 import Link from "next/link";
-import { CssBaseline } from "@mui/material";
 import StoryCatalog from "./components/StoryCatalog";
 
 const appNameFont = Bricolage_Grotesque({
@@ -16,25 +14,63 @@ export default async function Home() {
 
 	return (
 		<>
-			<CssBaseline />
-			<div className={styles.gridContainer}>
-				<div className={styles.cover}>
-					<div className={styles.coverTitleGroup}>
-						<h1 className={appNameFont.className}>Anthology</h1>
-						<p>Find your next short story</p>
-						{/* <Button>
-						<Link href="/sign-up">Sign Up</Link>
-					</Button>
-					<Link className={styles.signInLink} href="/sign-in">
-						Sign In
-					</Link> */}
-						<Button>
-							<Link href="/user/queue">Go to Queue</Link>
-						</Button>
-					</div>
-				</div>
-				<div className={styles.visualInterest}></div>
-			</div>
+			<Grid container spacing={0}>
+				<Grid item size={{ sm: 12, md: 6 }}>
+					<Box
+						sx={{
+							backgroundImage: "url('/blossom-background.png')",
+							minHeight: "486px",
+							backgroundSize: "contain",
+							backgroundRepeat: "no-repeat",
+							backgroundPosition: "right",
+							backgroundColor: "white",
+							display: "flex",
+							flexDirection: "column",
+							justifyContent: "center",
+							margin: "25px",
+						}}
+					>
+						<Typography
+							variant="appName"
+							mx={{ xs: 4, sm: 6, md: 8 }}
+						>
+							Anthology
+						</Typography>
+						<Typography
+							variant="body1"
+							mx={{ xs: 4, sm: 6, md: 8 }}
+						>
+							Find your next short story
+						</Typography>
+						<Stack
+							direction={{ xs: "column", sm: "row" }}
+							spacing={2}
+							mx={{ xs: 4, sm: 6, md: 8 }}
+							my={4}
+						>
+							<Button variant="contained">
+								<Link href="/sign-up">Sign Up</Link>
+							</Button>
+							<Button variant="outlined">
+								<Link href="/sign-in">Sign In</Link>
+							</Button>
+							{/* <Button variant="contained">
+								<Link href="/user/queue">Go to Queue</Link>
+							</Button> */}
+						</Stack>
+					</Box>
+				</Grid>
+				<Grid
+					item
+					size={{ sm: 0, md: 6 }}
+					sx={{
+						backgroundColor: "#ecff3d",
+						opacity: "0.8",
+						background:
+							"repeating-linear-gradient(-45deg,#f8ffbb,#f8ffbb 25px,#ecff3d 25px,#ecff3d 30px,#f8ffbb 30px,#f8ffbb 35px,#ecff3d 35px,#ecff3d 60px)",
+					}}
+				></Grid>
+			</Grid>
 			<StoryCatalog stories={stories_data} />
 		</>
 	);
