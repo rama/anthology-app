@@ -25,7 +25,7 @@ const theme = createTheme({
 				},
 			},
 		},
-		dark: true,
+		dark: false,
 	},
 	components: {
 		MuiButton: {
