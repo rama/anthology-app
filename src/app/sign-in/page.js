@@ -4,6 +4,9 @@ import React from "react";
 import { Container, TextField, Button, Typography, Box } from "@mui/material";
 
 export default function SignIn() {
+	const [username, setUsername] = React.useState("");
+	const [password, setPassword] = React.useState("");
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		// TODO submit form to backend
@@ -31,10 +34,12 @@ export default function SignIn() {
 						margin="normal"
 						required
 						fullWidth
-						id="email"
-						label="Email Address"
-						name="email"
-						autoComplete="email"
+						id="username"
+						label="Username"
+						name="username"
+						value={username}
+						autoComplete="username"
+						autoFocus
 					/>
 					<TextField
 						margin="normal"
@@ -44,6 +49,7 @@ export default function SignIn() {
 						label="Password"
 						type="password"
 						id="password"
+						value={password}
 						autoComplete="current-password"
 					/>
 					<Button
