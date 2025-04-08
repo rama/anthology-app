@@ -2,13 +2,39 @@
 
 import React from "react";
 import { Container, TextField, Button, Typography, Box } from "@mui/material";
+import { getCsrfToken } from "../utils";
+import { useRouter } from "next/navigation";
 
 export default function SignUp() {
-	const handleSubmit = (event) => {
+	const [username, setUsername] = React.useState("");
+	const [email, setEmail] = React.useState("");
+	const [password, setPassword] = React.useState("");
+	const router = useRouter();
+
+	async function handleSubmit(event) {
 		event.preventDefault();
-		// TODO submit form to backend
-		console.log("Sign Up");
-	};
+		const csrfToken = getCsrfToken();
+		const user = {
+			username: username,
+			email: email,
+			password: password,
+		};
+		const response = await fetch("https://anthology.rcdis.co/api/signup/", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"X-CSRFToken": csrfToken,
+			},
+			body: JSON.stringify(user),
+		});
+		if (response.ok) {
+			const newUser = response.json();
+			router.push(`/${newUser.username}`);
+		} else {
+			console.log("Sign up failed");
+			// TODO display error message
+		}
+	}
 
 	return (
 		<Container component="main" maxWidth="xs">
@@ -34,6 +60,8 @@ export default function SignUp() {
 						id="username"
 						label="Username"
 						name="username"
+						value={username}
+						onChange={(e) => setUsername(e.target.value)}
 						autoComplete="username"
 						autoFocus
 					/>
@@ -44,6 +72,8 @@ export default function SignUp() {
 						id="email"
 						label="Email Address"
 						name="email"
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
 						autoComplete="email"
 					/>
 					<TextField
@@ -54,6 +84,8 @@ export default function SignUp() {
 						label="Password"
 						type="password"
 						id="password"
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
 						autoComplete="current-password"
 					/>
 					<Button

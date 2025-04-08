@@ -9,7 +9,7 @@ const appNameFont = Bricolage_Grotesque({
 });
 
 export default async function Home() {
-	const stories = await fetch("https://anthology.rcdis.co/stories/");
+	const stories = await fetch("http://localhost:8000/api/stories/");
 	const stories_data = await stories.json();
 
 	return (
