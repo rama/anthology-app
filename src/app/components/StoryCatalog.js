@@ -27,6 +27,7 @@ export default function StoryCatalog({ stories }) {
 								"&:hover": {
 									transform: "translateY(-4px)",
 									backgroundColor: "#f8ffbb",
+									color: "#171717",
 								},
 							}}
 						>

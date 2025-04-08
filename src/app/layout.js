@@ -38,13 +38,7 @@ export default function RootLayout({ children }) {
 				<AppRouterCacheProvider>
 					<ThemeProvider theme={theme}>
 						<CssBaseline />
-						{/* <header>
-					<h1 className={appNameFont.className}>Anthology</h1>
-				</header> */}
 						<main>{children}</main>
-						{/* <footer className={styles.footer}>
-						Find your next short story.
-					</footer> */}
 					</ThemeProvider>
 				</AppRouterCacheProvider>
 			</body>
