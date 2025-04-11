@@ -2,16 +2,38 @@
 
 import React from "react";
 import { Container, TextField, Button, Typography, Box } from "@mui/material";
+import { getCsrfToken } from "../utils";
+import { useRouter } from "next/navigation";
 
 export default function SignIn() {
 	const [username, setUsername] = React.useState("");
 	const [password, setPassword] = React.useState("");
+	const router = useRouter();
 
-	const handleSubmit = (event) => {
+	async function handleSubmit(event) {
 		event.preventDefault();
-		// TODO submit form to backend
-		console.log("Sign In");
-	};
+		const csrfToken = getCsrfToken();
+		const user = {
+			username: username,
+			password: password,
+		};
+		const response = await fetch("https://anthology.rcdis.co/api/signin/", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"X-CSRFToken": csrfToken,
+			},
+			body: JSON.stringify(user),
+		});
+		if (response.ok) {
+			const { username, token } = await response.json();
+			localStorage.setItem("authToken", token);
+			router.push(`/${username}`);
+		} else {
+			console.error("Sign in failed");
+			// TODO display error message
+		}
+	}
 
 	return (
 		<Container component="main" maxWidth="xs">
@@ -38,6 +60,7 @@ export default function SignIn() {
 						label="Username"
 						name="username"
 						value={username}
+						onChange={(e) => setUsername(e.target.value)}
 						autoComplete="username"
 						autoFocus
 					/>
@@ -50,6 +73,7 @@ export default function SignIn() {
 						type="password"
 						id="password"
 						value={password}
+						onChange={(e) => setPassword(e.target.value)}
 						autoComplete="current-password"
 					/>
 					<Button
