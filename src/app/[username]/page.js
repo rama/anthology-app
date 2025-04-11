@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { Container, Typography, AppBar, Toolbar, Button } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useRouter, useParams } from "next/navigation";
@@ -7,6 +8,13 @@ import { useRouter, useParams } from "next/navigation";
 export default function UserPage() {
 	const { username } = useParams();
 	const router = useRouter();
+
+	useEffect(() => {
+		const token = localStorage.getItem("authToken");
+		if (!token) {
+			router.push("/");
+		}
+	}, []);
 
 	function handleLogout() {
 		localStorage.removeItem("authToken");
