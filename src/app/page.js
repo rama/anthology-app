@@ -15,7 +15,7 @@ export default async function Home() {
 	return (
 		<>
 			<Grid container spacing={0}>
-				<Grid item size={{ sm: 12, md: 6 }}>
+				<Grid size={{ sm: 12, md: 6 }}>
 					<Box
 						sx={{
 							backgroundImage: "url('/blossom-background.png')",
@@ -61,7 +61,6 @@ export default async function Home() {
 					</Box>
 				</Grid>
 				<Grid
-					item
 					size={{ sm: 0, md: 6 }}
 					sx={{
 						backgroundColor: "#ecff3d",
