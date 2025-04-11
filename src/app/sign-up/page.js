@@ -28,10 +28,11 @@ export default function SignUp() {
 			body: JSON.stringify(user),
 		});
 		if (response.ok) {
-			const newUser = response.json();
-			router.push(`/${newUser.username}`);
+			const { username, token } = await response.json();
+			localStorage.setItem("authToken", token);
+			router.push(`/${username}`);
 		} else {
-			console.log("Sign up failed");
+			console.error("Sign up failed");
 			// TODO display error message
 		}
 	}
