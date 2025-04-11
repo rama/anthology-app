@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
-import { Container, Typography, AppBar, Toolbar, Button } from "@mui/material";
-import LogoutIcon from "@mui/icons-material/Logout";
 import { useRouter, useParams } from "next/navigation";
+import NavBar from "../components/NavBar";
+import { Container, Typography } from "@mui/material";
 
 export default function UserPage() {
 	const { username } = useParams();
@@ -16,39 +16,9 @@ export default function UserPage() {
 		}
 	}, []);
 
-	function handleLogout() {
-		localStorage.removeItem("authToken");
-		router.push("/");
-	}
-
-	function goHome() {
-		router.push("/");
-	}
-
 	return (
 		<>
-			<AppBar position="static">
-				<Toolbar>
-					<Typography
-						variant="appName"
-						style={{
-							flexGrow: 1,
-							fontSize: "2rem",
-							cursor: "pointer",
-						}}
-						onClick={goHome}
-					>
-						Anthology
-					</Typography>
-					<Button
-						color="inherit"
-						startIcon={<LogoutIcon />}
-						onClick={handleLogout}
-					>
-						Logout
-					</Button>
-				</Toolbar>
-			</AppBar>
+			<NavBar />
 			<Container
 				maxWidth="sm"
 				style={{ textAlign: "center", marginTop: "50px" }}
