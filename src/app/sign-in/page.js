@@ -9,6 +9,7 @@ export default function SignIn() {
 	const [username, setUsername] = React.useState("");
 	const [password, setPassword] = React.useState("");
 	const router = useRouter();
+	const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 	async function handleSubmit(event) {
 		event.preventDefault();
@@ -17,7 +18,7 @@ export default function SignIn() {
 			username: username,
 			password: password,
 		};
-		const response = await fetch("https://anthology.rcdis.co/api/signin/", {
+		const response = await fetch(`${apiUrl}/signin/`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

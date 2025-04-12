@@ -10,6 +10,7 @@ export default function SignUp() {
 	const [email, setEmail] = React.useState("");
 	const [password, setPassword] = React.useState("");
 	const router = useRouter();
+	const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 	async function handleSubmit(event) {
 		event.preventDefault();
@@ -19,7 +20,7 @@ export default function SignUp() {
 			email: email,
 			password: password,
 		};
-		const response = await fetch("https://anthology.rcdis.co/api/signup/", {
+		const response = await fetch(`${apiUrl}/signup/`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
