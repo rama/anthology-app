@@ -2,7 +2,6 @@
 
 import React from "react";
 import { Container, TextField, Button, Typography, Box } from "@mui/material";
-import { getCsrfToken } from "../utils";
 import { useRouter } from "next/navigation";
 
 export default function SignIn() {
@@ -13,7 +12,6 @@ export default function SignIn() {
 
 	async function handleSubmit(event) {
 		event.preventDefault();
-		const csrfToken = getCsrfToken();
 		const user = {
 			username: username,
 			password: password,
@@ -22,7 +20,6 @@ export default function SignIn() {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
-				"X-CSRFToken": csrfToken,
 			},
 			body: JSON.stringify(user),
 		});
