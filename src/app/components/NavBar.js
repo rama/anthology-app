@@ -5,8 +5,20 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useRouter } from "next/navigation";
 
 export default function NavBar() {
-	function handleLogout() {
-		localStorage.removeItem("authToken");
+	const token = localStorage.getItem("authToken");
+	const router = useRouter();
+	const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+	async function handleLogout() {
+		if (token) {
+			const response = await fetch(`${apiUrl}/logout/`, {
+				method: "POST",
+				headers: {
+					Authorization: `Token ${token}`,
+				},
+			});
+			localStorage.removeItem("authToken");
+		}
 		router.push("/");
 	}
 
