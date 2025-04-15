@@ -3,13 +3,14 @@
 import { Container, Typography, AppBar, Toolbar, Button } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useRouter } from "next/navigation";
+import { getCookie, deleteCookie } from "../utils";
 
 export default function NavBar() {
-	const token = localStorage.getItem("authToken");
 	const router = useRouter();
 	const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 	async function handleLogout() {
+		const token = getCookie("authToken");
 		if (token) {
 			const response = await fetch(`${apiUrl}/logout/`, {
 				method: "POST",
@@ -17,7 +18,9 @@ export default function NavBar() {
 					Authorization: `Token ${token}`,
 				},
 			});
-			localStorage.removeItem("authToken");
+			if (response.ok) {
+				deleteCookie("authToken");
+			}
 		}
 		router.push("/");
 	}

@@ -27,7 +27,7 @@ export default function SignUp() {
 		});
 		if (response.ok) {
 			const { username, token } = await response.json();
-			localStorage.setItem("authToken", token);
+			document.cookie = `authToken=${token}; secure; SameSite=Strict; Path=/;`;
 			router.push("/dashboard");
 		} else {
 			console.error("Sign up failed");
