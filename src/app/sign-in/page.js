@@ -26,7 +26,7 @@ export default function SignIn() {
 		if (response.ok) {
 			const { username, token } = await response.json();
 			localStorage.setItem("authToken", token);
-			router.push(`/${username}`);
+			router.push("/dashboard");
 		} else {
 			console.error("Sign in failed");
 			// TODO display error message

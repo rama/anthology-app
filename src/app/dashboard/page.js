@@ -1,20 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
-import { useRouter, useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import NavBar from "../components/NavBar";
 import { Container, Typography } from "@mui/material";
 
 export default function UserPage() {
-	const { username } = useParams();
 	const router = useRouter();
-
-	useEffect(() => {
-		const token = localStorage.getItem("authToken");
-		if (!token) {
-			router.push("/");
-		}
-	}, []);
 
 	return (
 		<>
@@ -24,7 +15,7 @@ export default function UserPage() {
 				style={{ textAlign: "center", marginTop: "50px" }}
 			>
 				<Typography variant="heading" gutterBottom>
-					Welcome, {username}!
+					Welcome!
 				</Typography>
 				<Typography variant="h6" gutterBottom>
 					Nothing here yet.
