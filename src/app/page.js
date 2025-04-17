@@ -9,13 +9,14 @@ const appNameFont = Bricolage_Grotesque({
 });
 
 export default async function Home() {
-	const stories = await fetch("https://anthology.rcdis.co/stories/");
+	const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+	const stories = await fetch(`${apiUrl}/stories/`);
 	const stories_data = await stories.json();
 
 	return (
 		<>
 			<Grid container spacing={0}>
-				<Grid item size={{ sm: 12, md: 6 }}>
+				<Grid size={{ sm: 12, md: 6 }}>
 					<Box
 						sx={{
 							backgroundImage: "url('/blossom-background.png')",
@@ -61,7 +62,6 @@ export default async function Home() {
 					</Box>
 				</Grid>
 				<Grid
-					item
 					size={{ sm: 0, md: 6 }}
 					sx={{
 						backgroundColor: "#ecff3d",
